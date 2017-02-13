@@ -1,7 +1,10 @@
 nhp=new.env()
-source('../R/nhpoisp/nhpoisp.R', local=nhp)
+source('../stormwavecluster/R/nhpoisp/nhpoisp.R', local=nhp)
 
-events <- c(32000, 38500, 45000, 55000, 62500, 70000, 1000000, 2000000, 4500000) # Cadell
+#events <- c(32000, 38500, 45000, 55000, 62500, 70000, 1000000, 2000000, 4500000) # Cadell
+#events <- c(12100, 18000, 21000, 24000, 55000) # D'n 4 events
+events <- c(12100, 17000,19000, 21000, 22500, 24000, 55000) # D'n 6 events
+#events <- c(780, 1300, 10400, 120000) # Aka
 #events <- c(99000)
 #events <- c(30000, 50000, 90000, 1000000)
 #events <- c(5500, 11500, 32500, 69000, 101000) #Galeen (Roer Valley)
@@ -46,5 +49,6 @@ abline(0,1,col='red')
 ## of this statistic, as compared with the null hypothesis samples.
 p_value = 1 - mean(random_stat < var(diff(events))/mean(diff(events))^2)
 print(p_value)
+p_value
 # ~ 0.23 -- i.e. not unusual.
 dev.off()
