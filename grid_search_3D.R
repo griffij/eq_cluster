@@ -8,21 +8,18 @@ library('rgl')
 #events <- c(30000, 50000, 90000, 1000000)
 #events <- c(30000, 50000, 90000, 250000, 500000, 530000, 570000, 590000, 850000)
 #events <- c(20000, 32000, 45000, 54000, 62000, 70000, 1000000, 2000000, 4000000) # Cadell
-events <- c(20000, 22500, 25000,26250, 27500, 30000, 50000) # Dunstan
+#events <- c(15100, 18000, 21000, 24000, 55000) # D'n 4 events
+#events <- c(15100, 17000,19000, 21000, 22500, 24000, 55000) # D'n 6 events
+events <- c(780, 1300, 10400, 120000) #        Aka
 #events <- c(365, 526, 530, 601, 692, 733, 764, 794, 824, 840, 1208, 1237, 1314, 1350, 1388, 1569, 1597, 1613, 1631, 1658, 1703, 1797, 1833, 2007, 2010) #Sumat\
 #ra (Mentawai Segment) from Philibosian et al 2017, Figures 19,20)
 #events <- events - 364
 
-#thetas1 = seq(0, 1e-05, len=100)
+
 thetas1 = seq(-1e-04, 5e-04, len=25)
 thetas2 = seq(-1e-03, 2e-03, len=25)
-thetas3 = seq(1000,20000, len=25)
-#M = mesh(thetas1, thetas2, thetas3)
-#rate_equation = 'theta[1] + theta[2]*exp(-(t-tlast)/14486)'
+thetas3 = seq(1,10000, len=30)
 rate_equation = 'theta[1] + theta[2]*exp(-(t-tlast)/theta[3])'
-#thetas2 = seq(-12, -3, len=101)
-#thetas2 = seq(-8, -1, len=101)
-#rate_equation = 'theta[1] + 10**(theta[2])*exp(-(t-tlast)/30)'
 
 negloglik_grid = array(NA, c(length(thetas1), length(thetas2), length(thetas3)))
 
@@ -40,13 +37,7 @@ for(k in 1:length(thetas3)){
 }
 
 M = mesh(thetas1, thetas2, thetas3)
-#negloglik_grid = with(M, nhp$negloglik_from_theta(
-#                theta=c(M$x, M$y, M$z),
-#                observed_data=events,
-#                x0 = 0,
-#                rate_equation=rate_equation,
- #               integration_dt = 100))
-#print(negloglik_grid)
+
 pdf('grid_search_3D.pdf')
 #par(mfrow = c(1, 2))
 #M = mesh(thetas1, thetas2, thetas3)
