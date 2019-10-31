@@ -41,6 +41,8 @@ qqplot(random_stat, random_statB)
 abline(0,1,col='red')
 qqplot(random_stat, random_statC)
 abline(0,1,col='red')
+#qqplot(random_stat, (var(diff(events))/mean(diff(events))^2))
+#abline(0,1,col='red')
 ##
 ## Accepting the above theory....
 ##
